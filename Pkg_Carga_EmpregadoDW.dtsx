@@ -1,0 +1,809 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/10/2020 11:26:17 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALUNO1"
+  DTS:CreatorName="universo\aluno"
+  DTS:DTSID="{B79B993A-FE74-4A12-B7EC-3D2D3DEBD2E0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Pkg_Carga_EmpregadoDW"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{0DEED880-C140-4B6C-83B9-69EFD3968DD0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{13C39032-E7C2-4E11-95C6-E820DAF8713D}"
+      DTS:ObjectName="ALUNO1.db_DW_Ecommerce">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=db_DW_Ecommerce;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EDDF94DB-6F27-411B-83F5-B72AECB85BF9}"
+      DTS:ObjectName="ALUNO1.STAGEAREA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=STAGEAREA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{D04716BB-A10B-483C-A964-B13F6161086B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carga_Empregado_DW"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{520EC2AF-8A80-4962-8448-2A5EB238F4B8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga_Empregado_DW"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TB_EMPREGADO]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      connectionManagerRefId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_EMPREGADO]"
+                          cachedDataType="i4"
+                          cachedName="ID_EMPREGADO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_EMPREGADO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NOME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NOME"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[NOME]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NUM_DEPEND]"
+                          cachedDataType="i2"
+                          cachedName="NUM_DEPEND"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NUM_DEPEND]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[NUM_DEPEND]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DATA_NASCIMENTO]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DATA_NASCIMENTO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATA_NASCIMENTO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_DEPARTAMENTO]"
+                          cachedDataType="i4"
+                          cachedName="ID_DEPARTAMENTO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_DEPARTAMENTO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_CARGO]"
+                          cachedDataType="i4"
+                          cachedName="ID_CARGO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_CARGO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_CARGO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DATA_ADMISSAO]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DATA_ADMISSAO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATA_ADMISSAO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATA_ADMISSAO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SALARIO]"
+                          cachedDataType="numeric"
+                          cachedName="SALARIO"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SALARIO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SALARIO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PREMIO_MENSAL]"
+                          cachedDataType="numeric"
+                          cachedName="PREMIO_MENSAL"
+                          cachedPrecision="10"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PREMIO_MENSAL]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PREMIO_MENSAL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SINDICALIZADO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="SINDICALIZADO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SINDICALIZADO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SINDICALIZADO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OBS]"
+                          cachedCodepage="1252"
+                          cachedDataType="text"
+                          cachedName="OBS"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBS]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[OBS]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FOTO]"
+                          cachedDataType="image"
+                          cachedName="FOTO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FOTO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FOTO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[COD_SUPERVISOR]"
+                          cachedDataType="i4"
+                          cachedName="COD_SUPERVISOR"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COD_SUPERVISOR]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[COD_SUPERVISOR]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[comissao]"
+                          cachedDataType="numeric"
+                          cachedName="comissao"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[comissao]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[comissao]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                          dataType="i4"
+                          name="ID_EMPREGADO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NUM_DEPEND]"
+                          dataType="i2"
+                          name="NUM_DEPEND" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                          dataType="dbTimeStamp"
+                          name="DATA_NASCIMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                          dataType="i4"
+                          name="ID_DEPARTAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_CARGO]"
+                          dataType="i4"
+                          name="ID_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATA_ADMISSAO]"
+                          dataType="dbTimeStamp"
+                          name="DATA_ADMISSAO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SALARIO]"
+                          dataType="numeric"
+                          name="SALARIO"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PREMIO_MENSAL]"
+                          dataType="numeric"
+                          name="PREMIO_MENSAL"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SINDICALIZADO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SINDICALIZADO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OBS]"
+                          codePage="1252"
+                          dataType="text"
+                          name="OBS" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FOTO]"
+                          dataType="image"
+                          name="FOTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[COD_SUPERVISOR]"
+                          dataType="i4"
+                          name="COD_SUPERVISOR" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[comissao]"
+                          dataType="numeric"
+                          name="comissao"
+                          precision="5"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TB_EMPREGADO_FINAL]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                      connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_EMPREGADO]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPREGADO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_EMPREGADO]"
+                          name="ID_EMPREGADO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NOME]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[NOME]"
+                          name="NOME"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[NUM_DEPEND]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NUM_DEPEND]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[NUM_DEPEND]"
+                          name="NUM_DEPEND"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATA_NASCIMENTO]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATA_NASCIMENTO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATA_NASCIMENTO]"
+                          name="DATA_NASCIMENTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_DEPARTAMENTO]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_DEPARTAMENTO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_DEPARTAMENTO]"
+                          name="ID_DEPARTAMENTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_CARGO]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_CARGO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID_CARGO]"
+                          name="ID_CARGO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATA_ADMISSAO]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATA_ADMISSAO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATA_ADMISSAO]"
+                          name="DATA_ADMISSAO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SALARIO]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SALARIO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SALARIO]"
+                          name="SALARIO"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PREMIO_MENSAL]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PREMIO_MENSAL]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[PREMIO_MENSAL]"
+                          name="PREMIO_MENSAL"
+                          precision="10"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SINDICALIZADO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SINDICALIZADO]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[SINDICALIZADO]"
+                          name="SINDICALIZADO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[OBS]"
+                          codePage="1252"
+                          dataType="text"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OBS]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[OBS]"
+                          name="OBS"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FOTO]"
+                          dataType="image"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FOTO]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[FOTO]"
+                          name="FOTO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[COD_SUPERVISOR]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[COD_SUPERVISOR]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[COD_SUPERVISOR]"
+                          name="COD_SUPERVISOR"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[comissao]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[comissao]"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].Columns[comissao]"
+                          name="comissao"
+                          precision="5"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPREGADO]"
+                          dataType="i4"
+                          name="ID_EMPREGADO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[NUM_DEPEND]"
+                          dataType="i2"
+                          name="NUM_DEPEND" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATA_NASCIMENTO]"
+                          dataType="dbTimeStamp"
+                          name="DATA_NASCIMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_DEPARTAMENTO]"
+                          dataType="i4"
+                          name="ID_DEPARTAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID_CARGO]"
+                          dataType="i4"
+                          name="ID_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATA_ADMISSAO]"
+                          dataType="dbTimeStamp"
+                          name="DATA_ADMISSAO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SALARIO]"
+                          dataType="numeric"
+                          name="SALARIO"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PREMIO_MENSAL]"
+                          dataType="numeric"
+                          name="PREMIO_MENSAL"
+                          precision="10"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SINDICALIZADO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SINDICALIZADO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OBS]"
+                          codePage="1252"
+                          dataType="text"
+                          name="OBS" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FOTO]"
+                          dataType="image"
+                          name="FOTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[COD_SUPERVISOR]"
+                          dataType="i4"
+                          name="COD_SUPERVISOR" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[comissao]"
+                          dataType="numeric"
+                          name="comissao"
+                          precision="5"
+                          scale="2" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_EMPREGADO]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_EMPREGADO]"
+                          name="ID_EMPREGADO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NOME]"
+                          name="NOME" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NUM_DEPEND]"
+                          dataType="i2"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[NUM_DEPEND]"
+                          name="NUM_DEPEND" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATA_NASCIMENTO]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATA_NASCIMENTO]"
+                          name="DATA_NASCIMENTO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_DEPARTAMENTO]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_DEPARTAMENTO]"
+                          name="ID_DEPARTAMENTO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_CARGO]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID_CARGO]"
+                          name="ID_CARGO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATA_ADMISSAO]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATA_ADMISSAO]"
+                          name="DATA_ADMISSAO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SALARIO]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SALARIO]"
+                          name="SALARIO"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PREMIO_MENSAL]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PREMIO_MENSAL]"
+                          name="PREMIO_MENSAL"
+                          precision="10"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SINDICALIZADO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SINDICALIZADO]"
+                          name="SINDICALIZADO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OBS]"
+                          codePage="1252"
+                          dataType="text"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OBS]"
+                          name="OBS" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FOTO]"
+                          dataType="image"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FOTO]"
+                          name="FOTO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[COD_SUPERVISOR]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[COD_SUPERVISOR]"
+                          name="COD_SUPERVISOR" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[comissao]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[comissao]"
+                          name="comissao"
+                          precision="5"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carga_Empregado_DW.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Sequence Container\Carga_Empregado_DW"
+          TopLeft="82.5142935772332,49.8352966229396" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="325.6,169.6"
+          Size="325.6,212.8"
+          Id="Package\Sequence Container"
+          TopLeft="378.857149309042,85.6470600246971" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carga_Empregado_DW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source"
+          TopLeft="426.857150126477,80.7529423090001" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination"
+          TopLeft="420.000007152557,183.529414338637" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Empregado_DW.Paths[OLE DB Source Output]"
+          TopLeft="503.428578639517,122.352942309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.1764720296365"
+              Start="0,0"
+              End="0,53.6764720296365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.6764720296365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Empregado_DW\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Empregado_DW\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

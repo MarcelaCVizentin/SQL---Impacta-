@@ -1,0 +1,1658 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/11/2020 10:10:48 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALUNO1"
+  DTS:CreatorName="universo\aluno"
+  DTS:DTSID="{FBBF15BC-EDE1-4FAA-86F7-93CCB60F08CB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Pkg_LookupCliente_DW"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{D5ABA4EB-C3F8-495C-AEE4-F1961D29E4BA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{88880AB5-D033-4120-B27B-3FABB7670D78}"
+      DTS:ObjectName="ALUNO1.db_DW_Ecommerce">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=db_DW_Ecommerce;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5887F5AE-8E47-4579-83C1-3FAA6D5343FE}"
+      DTS:ObjectName="ALUNO1.STAGEAREA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=STAGEAREA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{13F1A8AD-13DB-40E1-AA51-E3F797A356B8}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\solucaoimpacta\BaseGerada\tb_cliente_DW.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{C36613D9-F738-48FB-9CAF-E8930B9D8F36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 1"
+              DTS:DTSID="{54988421-D7BA-4506-B27A-FFA4E76F95EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 2"
+              DTS:DTSID="{689D970F-27E9-452A-AA2A-B4F54284C5C1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 3"
+              DTS:DTSID="{29B3CAF8-3C70-4AF7-A382-9675347AA092}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 4"
+              DTS:DTSID="{9575443E-AC57-46A9-A101-B9A7CA260EC8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 5"
+              DTS:DTSID="{393AFB87-1776-4FAF-B24E-4954B647925A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 6"
+              DTS:DTSID="{86995BAE-B9C7-4430-B90E-F724E9FD75B9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="131"
+              DTS:DataPrecision="10"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 7"
+              DTS:DTSID="{D6659882-38A2-474A-8D0A-FE5A67619A2C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="131"
+              DTS:DataPrecision="10"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 8"
+              DTS:DTSID="{59B3B7F8-89E3-4098-AC9F-C77B682615CC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 9"
+              DTS:DTSID="{EEAAFFAB-D0E7-42E8-AACA-A79B1ABCB453}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="302"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 10"
+              DTS:DTSID="{FD6A3183-E60D-434E-BD69-31905D4BE669}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="301"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 11"
+              DTS:DTSID="{249C6C54-09C1-479A-B9C0-39A54443992F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 12"
+              DTS:DTSID="{CD5FBA01-A775-4FCD-BCB6-ED0BD17F9A0E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 13"
+              DTS:DTSID="{5831276F-17C8-4470-8511-03AEFC93052B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6E8FFEB4-0250-4C47-A22D-383ED866E3CA}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\solucaoimpacta\BaseGerada\TB_CLIENTE_DW.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NOME"
+              DTS:DTSID="{2DF6DE8D-F26E-49FD-BC12-12D6ABD3BBE4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ID_CLIENTE"
+              DTS:DTSID="{02297D59-7D86-4212-8FD1-E1B06CA89F4A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FANTASIA"
+              DTS:DTSID="{4D089284-C1B2-4CAE-A281-E6FD36A782CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="18"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CNPJ"
+              DTS:DTSID="{153D1ED4-4550-4D20-A686-70DF790D02A9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IE"
+              DTS:DTSID="{21C1825D-687D-4B4F-BCAD-5FA3AE4B774A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FONE1"
+              DTS:DTSID="{42278CEC-4BF5-474B-9C3E-EE281553E734}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FONE2"
+              DTS:DTSID="{2BC8A35E-FA50-4FDF-A00A-906748A540A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="35"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="E_MAIL"
+              DTS:DTSID="{3383E37D-EEC3-45C4-AD66-2C602ACB9341}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_CADADASTRO"
+              DTS:DTSID="{39F0BB89-D1B8-4B48-AC27-F747A1804C2A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="131"
+              DTS:DataPrecision="5"
+              DTS:DataScale="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ICMS"
+              DTS:DTSID="{2B0A3649-8B08-451B-9C5D-822F138387D8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TIPO_CLI"
+              DTS:DTSID="{B49C30E6-EF4D-422B-9088-3E816A4209F8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="STATUS_CLI"
+              DTS:DTSID="{72B0DDAD-F77B-4BB2-9A79-EA555AAAD0BC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SN_ATIVO"
+              DTS:DTSID="{13F1E511-B272-4165-B834-07DC3075EDCB}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{46E9DA22-73AA-475E-96C1-11206D15759A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carga_Cliente"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F81A81DF-0061-4B61-ABAD-2F148AF07658}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga_Cliente"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Flat File Destination"
+                  localeId="1046"
+                  name="GravaRegistrosNovos">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether the data will overwrite or append to the destination file."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the text to write to the destination file before any data is written."
+                      expressionType="Notify"
+                      name="Header" />
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input]"
+                      hasSideEffects="true"
+                      name="Flat File Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[NOME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NOME"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[NOME]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[NOME]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[FANTASIA]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FANTASIA"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[FANTASIA]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FANTASIA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[CNPJ]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="18"
+                          cachedName="CNPJ"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[CNPJ]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[CNPJ]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[IE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="19"
+                          cachedName="IE"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[IE]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[IE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[FONE1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="FONE1"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[FONE1]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[FONE2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="FONE2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[FONE2]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[E_MAIL]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="35"
+                          cachedName="E_MAIL"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[E_MAIL]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[E_MAIL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[DT_CADADASTRO]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DT_CADADASTRO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[DT_CADADASTRO]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[DT_CADADASTRO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[ICMS]"
+                          cachedDataType="numeric"
+                          cachedName="ICMS"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[ICMS]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ICMS]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[TIPO_CLI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="TIPO_CLI"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[TIPO_CLI]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[TIPO_CLI]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[STATUS_CLI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="STATUS_CLI"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[STATUS_CLI]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[STATUS_CLI]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].Columns[SN_ATIVO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="SN_ATIVO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[SN_ATIVO]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[SN_ATIVO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[ID_CLIENTE]"
+                          dataType="i4"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[FANTASIA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FANTASIA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[CNPJ]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          name="CNPJ" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[IE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          name="IE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[FONE1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="FONE1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[FONE2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="FONE2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[E_MAIL]"
+                          codePage="1252"
+                          dataType="str"
+                          length="35"
+                          name="E_MAIL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[DT_CADADASTRO]"
+                          dataType="dbTimeStamp"
+                          name="DT_CADADASTRO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[ICMS]"
+                          dataType="numeric"
+                          name="ICMS"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[TIPO_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="TIPO_CLI" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[STATUS_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="STATUS_CLI" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input].ExternalColumns[SN_ATIVO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SN_ATIVO" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="InserirRegs_Tb_ClienteDW"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TB_CLIENTE]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      connectionManagerRefId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[NOME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NOME"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[NOME]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[ID_CLIENTE]"
+                          cachedDataType="i4"
+                          cachedName="ID_CLIENTE"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[FANTASIA]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="FANTASIA"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[FANTASIA]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FANTASIA]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[CNPJ]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="18"
+                          cachedName="CNPJ"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[CNPJ]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[CNPJ]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[IE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="19"
+                          cachedName="IE"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[IE]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[IE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[FONE1]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="FONE1"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[FONE1]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[FONE2]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="FONE2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[FONE2]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[E_MAIL]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="35"
+                          cachedName="E_MAIL"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[E_MAIL]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[E_MAIL]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[DT_CADADASTRO]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DT_CADADASTRO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[DT_CADADASTRO]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[DT_CADADASTRO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[ICMS]"
+                          cachedDataType="numeric"
+                          cachedName="ICMS"
+                          cachedPrecision="5"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[ICMS]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ICMS]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[TIPO_CLI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="TIPO_CLI"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[TIPO_CLI]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[TIPO_CLI]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[STATUS_CLI]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="STATUS_CLI"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[STATUS_CLI]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[STATUS_CLI]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].Columns[SN_ATIVO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="1"
+                          cachedName="SN_ATIVO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[SN_ATIVO]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[SN_ATIVO]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[ID_CLIENTE]"
+                          dataType="i4"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[FANTASIA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FANTASIA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[CNPJ]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          name="CNPJ" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[IE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          name="IE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[FONE1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="FONE1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[FONE2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="FONE2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[E_MAIL]"
+                          codePage="1252"
+                          dataType="str"
+                          length="35"
+                          name="E_MAIL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[DT_CADADASTRO]"
+                          dataType="dbTimeStamp"
+                          name="DT_CADADASTRO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[ICMS]"
+                          dataType="numeric"
+                          name="ICMS"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[TIPO_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="TIPO_CLI" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[STATUS_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="STATUS_CLI" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input].ExternalColumns[SN_ATIVO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SN_ATIVO" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Leitura_ClienteStage"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TB_CLIENTE_FINAL]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                      connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[NOME]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[NOME]"
+                          name="NOME"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FANTASIA]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[FANTASIA]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FANTASIA]"
+                          name="FANTASIA"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[CNPJ]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[CNPJ]"
+                          length="18"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[CNPJ]"
+                          name="CNPJ"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[IE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[IE]"
+                          length="19"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[IE]"
+                          name="IE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE1]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[FONE1]"
+                          length="15"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE1]"
+                          name="FONE1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE2]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[FONE2]"
+                          length="15"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[FONE2]"
+                          name="FONE2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[E_MAIL]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[E_MAIL]"
+                          length="35"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[E_MAIL]"
+                          name="E_MAIL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[DT_CADADASTRO]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[DT_CADADASTRO]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[DT_CADADASTRO]"
+                          name="DT_CADADASTRO"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ICMS]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[ICMS]"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[ICMS]"
+                          name="ICMS"
+                          precision="5"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[TIPO_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[TIPO_CLI]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[TIPO_CLI]"
+                          name="TIPO_CLI"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[STATUS_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[STATUS_CLI]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[STATUS_CLI]"
+                          name="STATUS_CLI"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[SN_ATIVO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[SN_ATIVO]"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[SN_ATIVO]"
+                          name="SN_ATIVO"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NOME" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[ID_CLIENTE]"
+                          dataType="i4"
+                          name="ID_CLIENTE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[FANTASIA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="FANTASIA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[CNPJ]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          name="CNPJ" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[IE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          name="IE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[FONE1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="FONE1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[FONE2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          name="FONE2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[E_MAIL]"
+                          codePage="1252"
+                          dataType="str"
+                          length="35"
+                          name="E_MAIL" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[DT_CADADASTRO]"
+                          dataType="dbTimeStamp"
+                          name="DT_CADADASTRO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[ICMS]"
+                          dataType="numeric"
+                          name="ICMS"
+                          precision="5"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[TIPO_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="TIPO_CLI" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[STATUS_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="STATUS_CLI" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].ExternalColumns[SN_ATIVO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          name="SN_ATIVO" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ID_CLIENTE]"
+                          name="ID_CLIENTE" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[NOME]"
+                          name="NOME" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[FANTASIA]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[FANTASIA]"
+                          name="FANTASIA" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[CNPJ]"
+                          codePage="1252"
+                          dataType="str"
+                          length="18"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[CNPJ]"
+                          name="CNPJ" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[IE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="19"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[IE]"
+                          name="IE" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[FONE1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[FONE1]"
+                          name="FONE1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[FONE2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="15"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[FONE2]"
+                          name="FONE2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[E_MAIL]"
+                          codePage="1252"
+                          dataType="str"
+                          length="35"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[E_MAIL]"
+                          name="E_MAIL" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[DT_CADADASTRO]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[DT_CADADASTRO]"
+                          name="DT_CADADASTRO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ICMS]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ICMS]"
+                          name="ICMS"
+                          precision="5"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[TIPO_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[TIPO_CLI]"
+                          name="TIPO_CLI" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[STATUS_CLI]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[STATUS_CLI]"
+                          name="STATUS_CLI" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[SN_ATIVO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="1"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[SN_ATIVO]"
+                          name="SN_ATIVO" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Cliente\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[TB_CLIENTE]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[TB_CLIENTE]) [refTable]
+where [refTable].[NOME] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_CLIENTE" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NOME" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FANTASIA" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CNPJ" dataType="DT_STR" length="18" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="IE" dataType="DT_STR" length="19" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FONE1" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="FONE2" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="E_MAIL" dataType="DT_STR" length="35" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DT_CADADASTRO" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ICMS" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;referenceColumn name="TIPO_CLI" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="STATUS_CLI" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SN_ATIVO" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[NOME]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Cliente\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      connectionManagerRefId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Cliente\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Lookup.Inputs[Lookup Input].Columns[NOME]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NOME"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output].Columns[NOME]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">NOME</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Match Output].Columns[NOME]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="50"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Match Output].Columns[NOME]"
+                          name="NOME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">NOME</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Cliente\Multicast"
+                  componentClassID="Microsoft.Multicast"
+                  contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+                  name="Multicast">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Cliente\Multicast.Inputs[Multicast Input 1]"
+                      name="Multicast Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Multicast.Outputs[Multicast Output 3]"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 3"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\Multicast.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Multicast.Outputs[Multicast Output 2]"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 2"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\Multicast.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Cliente\Multicast.Outputs[Multicast Output 1]"
+                      dangling="true"
+                      deleteOutputOnPathDetached="true"
+                      name="Multicast Output 1"
+                      synchronousInputId="Package\Sequence Container\Carga_Cliente\Multicast.Inputs[Multicast Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carga_Cliente.Paths[Lookup No Match Output]"
+                  endId="Package\Sequence Container\Carga_Cliente\Multicast.Inputs[Multicast Input 1]"
+                  name="Lookup No Match Output"
+                  startId="Package\Sequence Container\Carga_Cliente\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Sequence Container\Carga_Cliente.Paths[Multicast Output 2]"
+                  endId="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos.Inputs[Flat File Destination Input]"
+                  name="Multicast Output 2"
+                  startId="Package\Sequence Container\Carga_Cliente\Multicast.Outputs[Multicast Output 2]" />
+                <path
+                  refId="Package\Sequence Container\Carga_Cliente.Paths[Multicast Output 3]"
+                  endId="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW.Inputs[OLE DB Destination Input]"
+                  name="Multicast Output 3"
+                  startId="Package\Sequence Container\Carga_Cliente\Multicast.Outputs[Multicast Output 3]" />
+                <path
+                  refId="Package\Sequence Container\Carga_Cliente.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Carga_Cliente\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\Sequence Container\Carga_Cliente"
+          TopLeft="45.6000081743514,31.2000014585607" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="232,139.2"
+          Size="232,182.4"
+          Id="Package\Sequence Container"
+          TopLeft="434.285721681556,29.976471008644" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carga_Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175.2,41.6"
+          Id="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage"
+          TopLeft="461.714293577233,36.0941181532652" />
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Sequence Container\Carga_Cliente\Lookup"
+          TopLeft="487.428579729431,122.352942892424" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Cliente.Paths[OLE DB Source Output]"
+          TopLeft="546.571436653332,77.6941181532652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.6588247391592"
+              Start="0,0"
+              End="0,37.1588247391592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.1588247391592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Sequence Container\Carga_Cliente\Multicast"
+          TopLeft="484.571436823631,204.941179344811" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Cliente.Paths[Lookup No Match Output]"
+          TopLeft="544.200008276531,163.952942892424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9882364523865"
+              Start="0,0"
+              End="0,33.4882364523865">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4882364523865" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,10.9394307261933,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW"
+          TopLeft="574.285724065742,267.952944934409" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Cliente.Paths[Multicast Output 3]"
+          TopLeft="604.571436823631,225.741179344811">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.7142872421111,42.2117655895985"
+              Start="0,0"
+              End="71.7142872421111,34.7117655895985">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="67.7142872421111,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67.7142872421111,0"
+                    Point2="71.7142872421111,0"
+                    Point3="71.7142872421111,4" />
+                  <mssgle:LineSegment
+                    End="71.7142872421111,34.7117655895985" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Sequence Container\Carga_Cliente\GravaRegistrosNovos"
+          TopLeft="300.571433690129,274.682356793493" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Cliente.Paths[Multicast Output 2]"
+          TopLeft="544.571436823631,246.541179344811">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-155.200003133502,28.1411774486819"
+              Start="0,0"
+              End="-155.200003133502,20.6411774486819">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.0705887243409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.0705887243409"
+                    Point2="0,14.0705887243409"
+                    Point3="-4,14.0705887243409" />
+                  <mssgle:LineSegment
+                    End="-151.200003133502,14.0705887243409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-151.200003133502,14.0705887243409"
+                    Point2="-155.200003133502,14.0705887243409"
+                    Point3="-155.200003133502,18.0705887243409" />
+                  <mssgle:LineSegment
+                    End="-155.200003133502,20.6411774486819" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Cliente\Leitura_ClienteStage">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Cliente\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[TB_CLIENTE]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Cliente\InserirRegs_Tb_ClienteDW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

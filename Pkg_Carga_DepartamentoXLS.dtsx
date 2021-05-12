@@ -1,0 +1,657 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/11/2020 12:22:30 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALUNO1"
+  DTS:CreatorName="universo\aluno"
+  DTS:DTSID="{A0230DC5-D774-4E27-948A-3F3DEFFEE736}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Pkg_Carga_DepartamentoXLS"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{D169CFA5-DD9C-4A2D-B7A0-50F119268EE6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DBF2EA56-FDCF-40B6-B1AD-1A3DF01FA155}"
+      DTS:ObjectName="ALUNO1.db_DW_Ecommerce">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=db_DW_Ecommerce;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{4845301C-A7DF-42C8-8B01-4797B0D86A8D}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\solucaoimpacta\Bases\tb_departamento.xls;Extended Properties=&quot;EXCEL 8.0;HDR=NO&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8FEF1702-F841-4230-9517-368DBFEEBD06}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Apaga_Tb_EmpregadoDW"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EE94CCD8-E3F8-4072-8B03-FB0DA98460F2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Apaga_Tb_EmpregadoDW"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DBF2EA56-FDCF-40B6-B1AD-1A3DF01FA155}"
+              SQLTask:SqlStatementSource="DELETE FROM TB_DEPARTAMENTO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Carga_Tb_Departamento"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{56C65C47-55F9-471E-9BCE-AAF8DE550D65}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga_Tb_Departamento"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Converte_TipoDados"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input].Columns[F2]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="F2"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F2]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input].Columns[F3]"
+                          cachedDataType="r8"
+                          cachedName="F3"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F3]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input].Columns[F1]"
+                          cachedDataType="r8"
+                          cachedName="F1"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F1]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[QTD_FUNC]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[QTD_FUNC]"
+                          name="QTD_FUNC"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F3]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[ID_DEPARTAMENTO]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[ID_DEPARTAMENTO]"
+                          name="ID_DEPARTAMENTO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F1]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[DEPARTAMENTO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="30"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[DEPARTAMENTO]"
+                          name="DEPARTAMENTO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F2]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Inserir_Regs_Tb_DepartamentoDW"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TB_DEPARTAMENTO]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      connectionManagerRefId="Package.ConnectionManagers[ALUNO1.db_DW_Ecommerce]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].Columns[F1]"
+                          cachedDataType="r8"
+                          cachedName="F1"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F1]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].Columns[DEPARTAMENTO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="DEPARTAMENTO"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].ExternalColumns[DEPARTAMENTO]"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[DEPARTAMENTO]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].Columns[QTD_FUNC]"
+                          cachedDataType="i4"
+                          cachedName="QTD_FUNC"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].ExternalColumns[QTD_FUNC]"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output].Columns[QTD_FUNC]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                          dataType="i4"
+                          name="ID_DEPARTAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].ExternalColumns[DEPARTAMENTO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="30"
+                          name="DEPARTAMENTO" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input].ExternalColumns[QTD_FUNC]"
+                          dataType="i4"
+                          name="QTD_FUNC" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Leitura_Tb_Departamento"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">tb_departamento$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F1]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].ExternalColumns[F1]"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F1]"
+                          name="F1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F2]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].ExternalColumns[F2]"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F2]"
+                          name="F2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F3]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].ExternalColumns[F3]"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].Columns[F3]"
+                          name="F3"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].ExternalColumns[F1]"
+                          dataType="r8"
+                          name="F1" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].ExternalColumns[F2]"
+                          dataType="wstr"
+                          length="255"
+                          name="F2" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output].ExternalColumns[F3]"
+                          dataType="r8"
+                          name="F3" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[F1]"
+                          dataType="r8"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[F1]"
+                          name="F1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[F2]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[F2]"
+                          name="F2" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[F3]"
+                          dataType="r8"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[F3]"
+                          name="F3" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Carga_Tb_Departamento.Paths[Data Conversion Output]"
+                  endId="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Sequence Container\Carga_Tb_Departamento.Paths[Excel Source Output]"
+                  endId="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados.Inputs[Data Conversion Input]"
+                  name="Excel Source Output"
+                  startId="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{2F62B6D0-F969-4890-8B63-225DCDC6A5FA}"
+          DTS:From="Package\Sequence Container\Apaga_Tb_EmpregadoDW"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Carga_Tb_Departamento" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\Sequence Container\Apaga_Tb_EmpregadoDW"
+          TopLeft="35.7714355293587,17.5058831594394" />
+        <NodeLayout
+          Size="196.8,41.6"
+          Id="Package\Sequence Container\Carga_Tb_Departamento"
+          TopLeft="44.3428642467579,94.2117670481593" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="139.657149888058,59.1058831594394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.1058838887199"
+              Start="0,0"
+              End="0,27.6058838887199">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.6058838887199" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="257.6,191.2"
+          Size="257.6,234.4"
+          Id="Package\Sequence Container"
+          TopLeft="372.571434916282,42.2117652978864" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Carga_Tb_Departamento">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="245.6,41.6"
+          Id="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW"
+          TopLeft="328.571434166967,177.411767194015" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Sequence Container\Carga_Tb_Departamento\Converte_TipoDados"
+          TopLeft="366.285720523523,95.3882363065304" />
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento"
+          TopLeft="356.357148832205,27.5235297206364" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Tb_Departamento.Paths[Excel Source Output]"
+          TopLeft="455.721434677864,69.1235297206364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.264706585894"
+              Start="0,0"
+              End="0,18.764706585894">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.764706585894" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container\Carga_Tb_Departamento.Paths[Data Conversion Output]"
+          TopLeft="452.828577345245,136.98823630653">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.423530887485"
+              Start="0,0"
+              End="0,32.923530887485">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.923530887485" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Tb_Departamento\Inserir_Regs_Tb_DepartamentoDW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Carga_Tb_Departamento\Leitura_Tb_Departamento">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

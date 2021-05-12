@@ -1,0 +1,660 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/12/2020 1:23:03 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALUNO1"
+  DTS:CreatorName="universo\aluno"
+  DTS:DTSID="{BEC47787-5891-43B8-BBCB-128B340C086A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Pkg_Carga_Dim_Regiao"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{C8188D3B-5504-4F91-B155-3484877BE239}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.db_Ecommerce]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F87C563A-BF31-4BBF-87B5-E56928B99061}"
+      DTS:ObjectName="ALUNO1.db_Ecommerce">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=db_Ecommerce;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.db_Ecommerce 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{50FD015C-CE4F-4ACB-9577-A38841428DA8}"
+      DTS:ObjectName="ALUNO1.db_Ecommerce 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=db_Ecommerce;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.DM_VENDAS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2A231E4F-0235-44ED-8257-A94C7BF1CAF1}"
+      DTS:ObjectName="ALUNO1.DM_VENDAS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=DM_VENDAS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F8DAABED-2645-4DC8-8229-B68B40CD3E10}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ANOINI">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4CBB7407-8DB8-48F1-8C6A-09858E38A855}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MAXANO">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA4A685B-60E8-4A80-91AC-75F183E8D6FE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MAXMES">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E7F9BDE9-6DB3-42CC-9DC2-387253224438}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MINANO">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BC1BCDB9-1649-49FD-A2D9-083F5A240FB4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MINMES">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\For Loop Ano"
+      DTS:AssignExpression="@MINANO=@MINANO+1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{BEEBB641-1812-48FA-873D-57CA1D5A0B57}"
+      DTS:EvalExpression="@MINANO&lt;=@MAXANO"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@MINANO=@ANOINI"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="For Loop Ano">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Ano\For Loop Mes"
+          DTS:AssignExpression="@MINMES=@MINMES+1"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{6C2BCF53-289C-4CA0-8857-F98EC7963AC3}"
+          DTS:EvalExpression="@MINMES&lt;=@MAXMES"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@MINMES=1"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="For Loop Mes">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{F150EF6C-3BA4-4E9A-AF57-6630317D98BC}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Carga_Dim_Regiao"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="Inserir_Regs_Dim_Regiao"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[DIM_REGIAO]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[ALUNO1.DM_VENDAS]"
+                          connectionManagerRefId="Package.ConnectionManagers[ALUNO1.DM_VENDAS]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].Columns[SIGLA]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="2"
+                              cachedName="SIGLA"
+                              externalMetadataColumnId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[SIGLA]"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[SIGLA]" />
+                            <inputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].Columns[ESTADO]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="2"
+                              cachedName="ESTADO"
+                              externalMetadataColumnId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO]"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[ESTADO]" />
+                            <inputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].Columns[CIDADE]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="20"
+                              cachedName="CIDADE"
+                              externalMetadataColumnId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[CIDADE]"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[CIDADE]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[ID_REGIAO]"
+                              dataType="i4"
+                              name="ID_REGIAO" />
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[SIGLA]"
+                              codePage="1252"
+                              dataType="str"
+                              length="2"
+                              name="SIGLA" />
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[ESTADO]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              name="ESTADO" />
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input].ExternalColumns[CIDADE]"
+                              codePage="1252"
+                              dataType="str"
+                              length="40"
+                              name="CIDADE" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce"
+                      componentClassID="Microsoft.OLEDBSource"
+                      contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                      description="OLE DB Source"
+                      name="Leitura_Reg_Dbecommerce"
+                      usesDispositions="true"
+                      version="7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset"></property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT ESTADO AS SIGLA, ESTADO, CIDADE
+		FROM TB_PEDIDO AS PED
+		INNER JOIN TB_CLIENTE AS CLI
+		ON CLI.ID_CLIENTE=PED.ID_CLIENTE
+		INNER JOIN TB_ENDERECO AS TEND
+		ON TEND.id_cliente=CLI.ID_CLIENTE
+		WHERE YEAR(PED.DATA_EMISSAO)=?
+		AND MONTH(PED.DATA_EMISSAO)=?
+                                AND CIDADE IS NOT NULL</property>
+                        <property
+                          dataType="System.String"
+                          description="The variable that contains the SQL command to be executed."
+                          name="SqlCommandVariable"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">2</property>
+                        <property
+                          dataType="System.String"
+                          description="The mappings between the parameters in the SQL command and variables."
+                          name="ParameterMapping">"Parameter0:Input",{E7F9BDE9-6DB3-42CC-9DC2-387253224438};"Parameter1:Input",{BC1BCDB9-1649-49FD-A2D9-083F5A240FB4};</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[ALUNO1.db_Ecommerce]"
+                          connectionManagerRefId="Package.ConnectionManagers[ALUNO1.db_Ecommerce]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output]"
+                          name="OLE DB Source Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[SIGLA]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].ExternalColumns[SIGLA]"
+                              length="2"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[SIGLA]"
+                              name="SIGLA"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[ESTADO]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].ExternalColumns[ESTADO]"
+                              length="2"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[ESTADO]"
+                              name="ESTADO"
+                              truncationRowDisposition="FailComponent" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[CIDADE]"
+                              codePage="1252"
+                              dataType="str"
+                              errorOrTruncationOperation="Conversion"
+                              errorRowDisposition="FailComponent"
+                              externalMetadataColumnId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].ExternalColumns[CIDADE]"
+                              length="20"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].Columns[CIDADE]"
+                              name="CIDADE"
+                              truncationRowDisposition="FailComponent" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].ExternalColumns[SIGLA]"
+                              codePage="1252"
+                              dataType="str"
+                              length="2"
+                              name="SIGLA" />
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].ExternalColumns[ESTADO]"
+                              codePage="1252"
+                              dataType="str"
+                              length="2"
+                              name="ESTADO" />
+                            <externalMetadataColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output].ExternalColumns[CIDADE]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              name="CIDADE" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output]"
+                          isErrorOut="true"
+                          name="OLE DB Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[SIGLA]"
+                              codePage="1252"
+                              dataType="str"
+                              length="2"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[SIGLA]"
+                              name="SIGLA" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[ESTADO]"
+                              codePage="1252"
+                              dataType="str"
+                              length="2"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[ESTADO]"
+                              name="ESTADO" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[CIDADE]"
+                              codePage="1252"
+                              dataType="str"
+                              length="20"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[CIDADE]"
+                              name="CIDADE" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao.Paths[OLE DB Source Output]"
+                      endId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao.Inputs[OLE DB Destination Input]"
+                      name="OLE DB Source Output"
+                      startId="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce.Outputs[OLE DB Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Variaveis_Aux"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{02444206-F908-4C56-9CF3-BCFD9289093C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Variaveis_Aux"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{50FD015C-CE4F-4ACB-9577-A38841428DA8}"
+          SQLTask:SqlStatementSource="SELECT MIN(YEAR(DATA_EMISSAO)) AS MINANO&#xA;      ,MAX(YEAR(DATA_EMISSAO)) AS MAXANO&#xA;&#x9;  ,MIN(MONTH(DATA_EMISSAO)) AS MINMES&#xA;&#x9;  ,MAX(MONTH(DATA_EMISSAO)) AS MAXMES&#xA;&#x9;  ,MIN(YEAR(DATA_EMISSAO)) AS ANOINI&#xA;FROM TB_PEDIDO"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MINANO"
+            SQLTask:DtsVariableName="User::MINANO" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MAXANO"
+            SQLTask:DtsVariableName="User::MAXANO" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MINMES"
+            SQLTask:DtsVariableName="User::MINMES" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MAXMES"
+            SQLTask:DtsVariableName="User::MAXMES" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="ANOINI"
+            SQLTask:DtsVariableName="User::ANOINI" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9D6E890D-91CD-4470-9008-7ABF38735E9A}"
+      DTS:From="Package\Variaveis_Aux"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\For Loop Ano" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Variaveis_Aux"
+          TopLeft="114.285716231988,101.552942600712" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao"
+          TopLeft="30.6285799337896,26.305884326288" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="225.6,122.4"
+          Size="225.6,165.6"
+          Id="Package\For Loop Ano\For Loop Mes"
+          TopLeft="31.6571504670748,40.3764723213486" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="288.8,262.4"
+          Size="288.8,305.6"
+          Id="Package\For Loop Ano"
+          TopLeft="414.857149922118,39.7647064400379" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="258.285716231988,122.352942600712">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="156.57143369013,70.2117638393259"
+              Start="0,0"
+              End="149.07143369013,70.2117638393259">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.285716845065,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.285716845065,0"
+                    Point2="78.285716845065,0"
+                    Point3="78.285716845065,4" />
+                  <mssgle:LineSegment
+                    End="78.285716845065,66.2117638393259" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.285716845065,66.2117638393259"
+                    Point2="78.285716845065,70.2117638393259"
+                    Point3="82.285716845065,70.2117638393259" />
+                  <mssgle:LineSegment
+                    End="149.07143369013,70.2117638393259" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao"
+          TopLeft="452.000007697514,171.294120049394" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce"
+          TopLeft="437.142864587356,77.0823540222274" />
+        <EdgeLayout
+          Id="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao.Paths[OLE DB Source Output]"
+          TopLeft="541.142864587356,118.682354022227">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8571431101582,52.6117660271666"
+              Start="0,0"
+              End="10.8571431101582,45.1117660271666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.3058830135833" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.3058830135833"
+                    Point2="0,26.3058830135833"
+                    Point3="4,26.3058830135833" />
+                  <mssgle:LineSegment
+                    End="6.85714311015818,26.3058830135833" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.85714311015818,26.3058830135833"
+                    Point2="10.8571431101582,26.3058830135833"
+                    Point3="10.8571431101582,30.3058830135833" />
+                  <mssgle:LineSegment
+                    End="10.8571431101582,45.1117660271666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Leitura_Reg_Dbecommerce">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Ano\For Loop Mes\Carga_Dim_Regiao\Inserir_Regs_Dim_Regiao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1052 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/10/2020 12:22:54 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALUNO1"
+  DTS:CreatorName="universo\aluno"
+  DTS:DTSID="{EBE2A5B6-1FCF-4EE8-9C9A-2CC75164F42A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Pkg_Carga_StageDepend"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{82F39DD7-1F99-4BA5-91D3-B7078579D75F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1088E48C-498F-4A02-A28B-747E84E8A30B}"
+      DTS:ObjectName="ALUNO1.STAGEAREA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=STAGEAREA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conexao_ArqDependente]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{332063F7-72FF-4CFA-82A0-1C83F8A96627}"
+      DTS:ObjectName="Conexao_ArqDependente">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\solucaoimpacta\Bases\tb_dependente.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:ObjectName="ID_DEPENDENTE"
+              DTS:DTSID="{6AA62992-5BA2-42B3-886F-CC02F99B883A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:ObjectName="ID_EMPREGADO"
+              DTS:DTSID="{88248CD6-7F95-43F6-8DF0-C656728E0B43}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:ObjectName="NOME"
+              DTS:DTSID="{A58E710D-8275-4092-BA70-C10F048D27CF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:ObjectName="DATA_NASCIMENTO"
+              DTS:DTSID="{6E5713A4-3A1D-422D-B602-B767DA62D23F}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Apaga_Tbdependente_final"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0332BF28-D17B-4816-9585-7B272A921A6D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Apaga_Tbdependente_final"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1088E48C-498F-4A02-A28B-747E84E8A30B}"
+          SQLTask:SqlStatementSource="DELETE FROM TB_DEPENDENTE_ORIG&#xA;DELETE FROM TB_DEPENDENTE_FINAL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga_Dependente"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5E3CE1DC-469C-459D-A061-A05CFA433651}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_Dependente"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_Dependente\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_Dependente\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_DATA_NASC]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Deriv_DATA_NASC"
+                      lineageId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Output].Columns[Deriv_DATA_NASC]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Carga_Dependente\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_DATA_NASC]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_DATA_NASC]"
+                      name="Conv_DATA_NASC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_Dependente\Derived Column.Outputs[Derived Column Output].Columns[Deriv_DATA_NASC]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Carga_Dependente\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Dependente\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_Dependente\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Derived Column.Inputs[Derived Column Input].Columns[DATA_NASCIMENTO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DATA_NASCIMENTO"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[DATA_NASCIMENTO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carga_Dependente\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Output].Columns[Deriv_DATA_NASC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Output].Columns[Deriv_DATA_NASC]"
+                      name="Deriv_DATA_NASC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[DATA_NASCIMENTO]} == "NULL" ? NULL(DT_WSTR,30) : #{Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[DATA_NASCIMENTO]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATA_NASCIMENTO == "NULL" ? NULL(DT_WSTR,30) : DATA_NASCIMENTO</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carga_Dependente\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Dependente\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1046"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Dependente\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conexao_ArqDependente]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conexao_ArqDependente]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_DEPENDENTE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID_DEPENDENTE]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_DEPENDENTE]"
+                      name="ID_DEPENDENTE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_EMPREGADO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID_EMPREGADO]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_EMPREGADO]"
+                      name="ID_EMPREGADO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[NOME]"
+                      length="50"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[NOME]"
+                      name="NOME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[DATA_NASCIMENTO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DATA_NASCIMENTO]"
+                      length="30"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[DATA_NASCIMENTO]"
+                      name="DATA_NASCIMENTO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID_DEPENDENTE]"
+                      dataType="i4"
+                      name="ID_DEPENDENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ID_EMPREGADO]"
+                      dataType="i4"
+                      name="ID_EMPREGADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOME" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[DATA_NASCIMENTO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DATA_NASCIMENTO" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Inserir_Regs_tb_DependenteFinal"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_DEPENDENTE_FINAL]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].Columns[ID_DEPENDENTE]"
+                      cachedDataType="i4"
+                      cachedName="ID_DEPENDENTE"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPENDENTE]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_DEPENDENTE]" />
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].Columns[ID_EMPREGADO]"
+                      cachedDataType="i4"
+                      cachedName="ID_EMPREGADO"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_EMPREGADO]" />
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].Columns[NOME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NOME"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[NOME]" />
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].Columns[Conv_DATA_NASC]"
+                      cachedDataType="dbDate"
+                      cachedName="Conv_DATA_NASC"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      lineageId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_DATA_NASC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPENDENTE]"
+                      dataType="i4"
+                      name="ID_DEPENDENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      dataType="i4"
+                      name="ID_EMPREGADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOME" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_NASCIMENTO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Inserir_regs_tb_dependenteorig"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_DEPENDENTE_ORIG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].Columns[ID_DEPENDENTE]"
+                      cachedDataType="i4"
+                      cachedName="ID_DEPENDENTE"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPENDENTE]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_DEPENDENTE]" />
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].Columns[ID_EMPREGADO]"
+                      cachedDataType="i4"
+                      cachedName="ID_EMPREGADO"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[ID_EMPREGADO]" />
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].Columns[NOME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NOME"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      lineageId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output].Columns[NOME]" />
+                    <inputColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].Columns[Conv_DATA_NASC]"
+                      cachedDataType="dbDate"
+                      cachedName="Conv_DATA_NASC"
+                      externalMetadataColumnId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      lineageId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_DATA_NASC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPENDENTE]"
+                      dataType="i4"
+                      name="ID_DEPENDENTE" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      dataType="i4"
+                      name="ID_EMPREGADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOME" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_NASCIMENTO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Dependente\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Carga_Dependente\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Dependente\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Carga_Dependente\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Dependente\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Carga_Dependente\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_Dependente\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Carga_Dependente\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_Dependente.Paths[Data Conversion Output]"
+              endId="Package\Carga_Dependente\Multicast.Inputs[Multicast Input 1]"
+              name="Data Conversion Output"
+              startId="Package\Carga_Dependente\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Carga_Dependente.Paths[Derived Column Output]"
+              endId="Package\Carga_Dependente\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Carga_Dependente\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carga_Dependente.Paths[Flat File Source Output]"
+              endId="Package\Carga_Dependente\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Carga_Dependente\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Carga_Dependente.Paths[Multicast Output 1]"
+              endId="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\Carga_Dependente\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Carga_Dependente.Paths[Multicast Output 2]"
+              endId="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 2"
+              startId="Package\Carga_Dependente\Multicast.Outputs[Multicast Output 2]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BE4084E6-D98C-483B-99F9-9611160FC5AE}"
+      DTS:From="Package\Apaga_Tbdependente_final"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carga_Dependente" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Carga_Dependente"
+          TopLeft="373.500006267002,104.605883742864" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Apaga_Tbdependente_final"
+          TopLeft="349.500005858285,11.6176471446212" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="455.500006062644,53.2176471446212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.3882365982425"
+              Start="0,0"
+              End="0,43.8882365982425">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.8882365982425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_Dependente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Carga_Dependente\Derived Column"
+          TopLeft="375.428577822082,91.1529424548562" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Carga_Dependente\Data Conversion"
+          TopLeft="373.142863497442,179.482355334932" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Carga_Dependente\Flat File Source"
+          TopLeft="373.500006267003,8.55882357231061" />
+        <NodeLayout
+          Size="229.6,41.6"
+          Id="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig"
+          TopLeft="229.785717594381,333.429415943053" />
+        <EdgeLayout
+          Id="Package\Carga_Dependente.Paths[Flat File Source Output]"
+          TopLeft="450.264292044542,50.1588235723106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.9941188825456"
+              Start="0,0"
+              End="0,33.4941188825456">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4941188825456" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Dependente.Paths[Derived Column Output]"
+          TopLeft="451.285720659762,132.752942454856">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.7294128800758"
+              Start="0,0"
+              End="0,39.2294128800758">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.2294128800758" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Carga_Dependente\Multicast"
+          TopLeft="389.714292351081,252.282356210069" />
+        <EdgeLayout
+          Id="Package\Carga_Dependente.Paths[Data Conversion Output]"
+          TopLeft="450.228577924261,221.082355334932">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.2000008751366"
+              Start="0,0"
+              End="0,23.7000008751366">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.7000008751366" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_Dependente.Paths[Multicast Output 1]"
+          TopLeft="431.047625684414,293.882356210069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-86.4619080900332,39.5470597329848"
+              Start="0,0"
+              End="-86.4619080900332,32.0470597329848">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.1310375226648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.1310375226648"
+                    Point2="0,16.1310375226648"
+                    Point3="-4,16.1310375226648" />
+                  <mssgle:LineSegment
+                    End="-82.4619080900332,16.1310375226648" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.4619080900332,16.1310375226648"
+                    Point2="-86.4619080900332,16.1310375226648"
+                    Point3="-86.4619080900332,20.1310375226648" />
+                  <mssgle:LineSegment
+                    End="-86.4619080900332,32.0470597329848" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="237.6,41.6"
+          Id="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal"
+          TopLeft="522.285723180187,329.129416088909" />
+        <EdgeLayout
+          Id="Package\Carga_Dependente.Paths[Multicast Output 2]"
+          TopLeft="468.380959017747,293.882356210069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172.70476416244,35.2470598788408"
+              Start="0,0"
+              End="172.70476416244,27.7470598788408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.3770902137377" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.3770902137377"
+                    Point2="0,14.3770902137377"
+                    Point3="4,14.3770902137377" />
+                  <mssgle:LineSegment
+                    End="168.70476416244,14.3770902137377" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168.70476416244,14.3770902137377"
+                    Point2="172.70476416244,14.3770902137377"
+                    Point3="172.70476416244,18.3770902137377" />
+                  <mssgle:LineSegment
+                    End="172.70476416244,27.7470598788408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Dependente\Inserir_regs_tb_dependenteorig">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Dependente\Inserir_Regs_tb_DependenteFinal">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

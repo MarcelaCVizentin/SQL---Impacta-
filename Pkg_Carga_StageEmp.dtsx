@@ -1,0 +1,2407 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/9/2020 12:29:43 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALUNO1"
+  DTS:CreatorName="universo\aluno"
+  DTS:DTSID="{2467F61F-DB01-47B0-9B06-2CE6E80E6126}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="Pkg_Carga_StageEmp"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{34E33D3E-4670-490C-8D17-B6098AD9468F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AC837492-28E1-4F8C-B041-758514D215FE}"
+      DTS:ObjectName="ALUNO1.STAGEAREA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=STAGEAREA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ALUNO1.STAGEAREA 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{03A8607D-09E0-4D81-8D5F-0291F7E24EAE}"
+      DTS:ObjectName="ALUNO1.STAGEAREA 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ALUNO1;Initial Catalog=STAGEAREA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Conexao_tbempregadotxt]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{BB3926B2-F9E8-4FAB-B4C7-58D1A11DD4B3}"
+      DTS:ObjectName="Conexao_tbempregadotxt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\solucaoimpacta\Bases\TB_EMPREGADO.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:ObjectName="Id_empregado"
+              DTS:DTSID="{98BC592B-0607-4E49-B860-DA93B201172B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:ObjectName="Nome"
+              DTS:DTSID="{23E736B8-55D4-44E9-938C-DE6AC16D865A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Num_depend"
+              DTS:DTSID="{45C82917-93E7-44E1-AD57-5B94FD3BF429}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Data_nascimento"
+              DTS:DTSID="{46C49625-0BE9-4E2E-B639-DE41C396790A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Id_departamento"
+              DTS:DTSID="{E314A00B-34BD-44DE-B621-66FA63882931}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Id_Cargo"
+              DTS:DTSID="{DCC3D6A8-82F1-4EEF-A86B-CB1DA2240896}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="7"
+              DTS:ObjectName="Data_admissao"
+              DTS:DTSID="{8C389F2C-ACE5-4371-AC78-EFFA2796CDF1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:ObjectName="Salario"
+              DTS:DTSID="{66AA6888-5F9C-49D9-B60C-C5929722DA5C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="14"
+              DTS:DataType="129"
+              DTS:ObjectName="Premio_mensal"
+              DTS:DTSID="{2BCF8F56-42C5-4CBF-88D6-02EA4F20C3E4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:ObjectName="Sindicalizado"
+              DTS:DTSID="{EA99D9C2-5002-457F-92D0-551E4E43E5AA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="302"
+              DTS:ObjectName="Obs"
+              DTS:DTSID="{F352EDE0-480F-49FC-9C18-E86D21AA67E5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="302"
+              DTS:ObjectName="Foto"
+              DTS:DTSID="{B004377B-1E21-46DD-BC8F-15FA5BDE9037}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="3"
+              DTS:ObjectName="Cod_supervisor"
+              DTS:DTSID="{263337CA-D48E-434F-8088-2396A1E02FCC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="7"
+              DTS:DataType="129"
+              DTS:ObjectName="comissao"
+              DTS:DTSID="{01494868-6888-4CDD-8564-0ADD6E748D10}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\ApagaRegs_TabelasOrig_Final"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CDC5FD08-D89D-45B9-A8EF-747823F133BC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ApagaRegs_TabelasOrig_Final"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AC837492-28E1-4F8C-B041-758514D215FE}"
+          SQLTask:SqlStatementSource="DELETE FROM TB_EMPREGADO_ORIG&#xA;DELETE FROM TB_EMPREGADO_FINAL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga_Tb_empregadoFinal"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0BB3C13E-C3FC-4B94-A27D-E465AC34B8A2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_Tb_empregadoFinal"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Inserir_Regs_Tb_EmpregadoFinal"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_EMPREGADO_FINAL]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[ID_EMPREGADO]"
+                      cachedDataType="i4"
+                      cachedName="ID_EMPREGADO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_EMPREGADO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[NOME]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NOME"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[NOME]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[NUM_DEPEND]"
+                      cachedDataType="i2"
+                      cachedName="NUM_DEPEND"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[NUM_DEPEND]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[NUM_DEPEND]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[DATA_NASCIMENTO]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DATA_NASCIMENTO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[DATA_NASCIMENTO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[ID_DEPARTAMENTO]"
+                      cachedDataType="i4"
+                      cachedName="ID_DEPARTAMENTO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_DEPARTAMENTO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[ID_CARGO]"
+                      cachedDataType="i4"
+                      cachedName="ID_CARGO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_CARGO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_CARGO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[DATA_ADMISSAO]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DATA_ADMISSAO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[DATA_ADMISSAO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[DATA_ADMISSAO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[SALARIO]"
+                      cachedDataType="numeric"
+                      cachedName="SALARIO"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[SALARIO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[SALARIO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[PREMIO_MENSAL]"
+                      cachedDataType="numeric"
+                      cachedName="PREMIO_MENSAL"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[PREMIO_MENSAL]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[PREMIO_MENSAL]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[SINDICALIZADO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SINDICALIZADO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[SINDICALIZADO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[SINDICALIZADO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[OBS]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="OBS"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[OBS]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[OBS]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[FOTO]"
+                      cachedDataType="image"
+                      cachedName="FOTO"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[FOTO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[FOTO]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[COD_SUPERVISOR]"
+                      cachedDataType="i4"
+                      cachedName="COD_SUPERVISOR"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[COD_SUPERVISOR]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[COD_SUPERVISOR]" />
+                    <inputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].Columns[comissao]"
+                      cachedDataType="numeric"
+                      cachedName="comissao"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[comissao]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[comissao]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      dataType="i4"
+                      name="ID_EMPREGADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOME" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[NUM_DEPEND]"
+                      dataType="i2"
+                      name="NUM_DEPEND" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_NASCIMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                      dataType="i4"
+                      name="ID_DEPARTAMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[ID_CARGO]"
+                      dataType="i4"
+                      name="ID_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[DATA_ADMISSAO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_ADMISSAO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[SALARIO]"
+                      dataType="numeric"
+                      name="SALARIO"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[PREMIO_MENSAL]"
+                      dataType="numeric"
+                      name="PREMIO_MENSAL"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[SINDICALIZADO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SINDICALIZADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[OBS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="OBS" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[FOTO]"
+                      dataType="image"
+                      name="FOTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[COD_SUPERVISOR]"
+                      dataType="i4"
+                      name="COD_SUPERVISOR" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input].ExternalColumns[comissao]"
+                      dataType="numeric"
+                      name="comissao"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Leitura_Tb_Empregado_Orig"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_EMPREGADO_ORIG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_EMPREGADO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPREGADO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_EMPREGADO]"
+                      name="ID_EMPREGADO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[NOME]"
+                      length="50"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[NOME]"
+                      name="NOME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[NUM_DEPEND]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[NUM_DEPEND]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[NUM_DEPEND]"
+                      name="NUM_DEPEND"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[DATA_NASCIMENTO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[DATA_NASCIMENTO]"
+                      name="DATA_NASCIMENTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_DEPARTAMENTO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[ID_DEPARTAMENTO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_DEPARTAMENTO]"
+                      name="ID_DEPARTAMENTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_CARGO]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[ID_CARGO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[ID_CARGO]"
+                      name="ID_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[DATA_ADMISSAO]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[DATA_ADMISSAO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[DATA_ADMISSAO]"
+                      name="DATA_ADMISSAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[SALARIO]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[SALARIO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[SALARIO]"
+                      name="SALARIO"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[PREMIO_MENSAL]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[PREMIO_MENSAL]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[PREMIO_MENSAL]"
+                      name="PREMIO_MENSAL"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[SINDICALIZADO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[SINDICALIZADO]"
+                      length="1"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[SINDICALIZADO]"
+                      name="SINDICALIZADO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[OBS]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[OBS]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[OBS]"
+                      name="OBS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[FOTO]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[FOTO]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[FOTO]"
+                      name="FOTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[COD_SUPERVISOR]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[COD_SUPERVISOR]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[COD_SUPERVISOR]"
+                      name="COD_SUPERVISOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[comissao]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[comissao]"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].Columns[comissao]"
+                      name="comissao"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPREGADO]"
+                      dataType="i4"
+                      name="ID_EMPREGADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOME" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[NUM_DEPEND]"
+                      dataType="i2"
+                      name="NUM_DEPEND" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_NASCIMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[ID_DEPARTAMENTO]"
+                      dataType="i4"
+                      name="ID_DEPARTAMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[ID_CARGO]"
+                      dataType="i4"
+                      name="ID_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[DATA_ADMISSAO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_ADMISSAO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[SALARIO]"
+                      dataType="numeric"
+                      name="SALARIO"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[PREMIO_MENSAL]"
+                      dataType="numeric"
+                      name="PREMIO_MENSAL"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[SINDICALIZADO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SINDICALIZADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[OBS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="OBS" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[FOTO]"
+                      dataType="image"
+                      name="FOTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[COD_SUPERVISOR]"
+                      dataType="i4"
+                      name="COD_SUPERVISOR" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output].ExternalColumns[comissao]"
+                      dataType="numeric"
+                      name="comissao"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ID_EMPREGADO]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ID_EMPREGADO]"
+                      name="ID_EMPREGADO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[NOME]"
+                      name="NOME" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[NUM_DEPEND]"
+                      dataType="i2"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[NUM_DEPEND]"
+                      name="NUM_DEPEND" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[DATA_NASCIMENTO]"
+                      name="DATA_NASCIMENTO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ID_DEPARTAMENTO]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ID_DEPARTAMENTO]"
+                      name="ID_DEPARTAMENTO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ID_CARGO]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ID_CARGO]"
+                      name="ID_CARGO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[DATA_ADMISSAO]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[DATA_ADMISSAO]"
+                      name="DATA_ADMISSAO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[SALARIO]"
+                      dataType="numeric"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[SALARIO]"
+                      name="SALARIO"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[PREMIO_MENSAL]"
+                      dataType="numeric"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[PREMIO_MENSAL]"
+                      name="PREMIO_MENSAL"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[SINDICALIZADO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[SINDICALIZADO]"
+                      name="SINDICALIZADO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[OBS]"
+                      codePage="1252"
+                      dataType="text"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[OBS]"
+                      name="OBS" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[FOTO]"
+                      dataType="image"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[FOTO]"
+                      name="FOTO" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[COD_SUPERVISOR]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[COD_SUPERVISOR]"
+                      name="COD_SUPERVISOR" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[comissao]"
+                      dataType="numeric"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[comissao]"
+                      name="comissao"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_Tb_empregadoFinal.Paths[OLE DB Source Output]"
+              endId="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga_tb_empregadotxt"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{165EB90D-3393-4895-B0B2-F86514C67C77}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga_tb_empregadotxt"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga_tb_empregadotxt\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Num_depend]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Deriv_Num_depend"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Num_depend]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Data_nascimento]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Deriv_Data_nascimento"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Data_nascimento]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Id_Cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Deriv_Id_Cargo"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_Cargo]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Salario]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Deriv_Salario"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Salario]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Premio_Mensal]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Deriv_Premio_Mensal"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Premio_Mensal]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Sindicalizado]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Deriv_Sindicalizado"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Sindicalizado]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input].Columns[Deriv_Id_departamento]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Deriv_Id_departamento"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_departamento]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Num_depend]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Num_depend]"
+                      name="Conv_Num_depend"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Num_depend]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Data_nascimento]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Data_nascimento]"
+                      name="Conv_Data_nascimento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Data_nascimento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Id_Cargo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Id_Cargo]"
+                      name="Conv_Id_Cargo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_Cargo]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Salario]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Salario]"
+                      name="Conv_Salario"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Salario]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Premio_Mensal]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Premio_Mensal]"
+                      name="Conv_Premio_Mensal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Premio_Mensal]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sindicalizado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sindicalizado]"
+                      name="Conv_Sindicalizado"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Sindicalizado]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Id_departamento]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Id_departamento]"
+                      name="Conv_Id_departamento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_departamento]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_tb_empregadotxt\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Num_depend]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Num_depend"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Num_depend]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Data_nascimento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Data_nascimento"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_nascimento]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Id_Cargo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Id_Cargo"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_Cargo]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Salario]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="Salario"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Salario]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Premio_mensal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="14"
+                      cachedName="Premio_mensal"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Premio_mensal]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Sindicalizado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Sindicalizado"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Sindicalizado]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input].Columns[Id_departamento]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="Id_departamento"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_departamento]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Num_depend]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Num_depend]"
+                      name="Deriv_Num_depend"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Num_depend]} == "NULL" ? NULL(DT_WSTR,4) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Num_depend]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Num_depend == "NULL" ? NULL(DT_WSTR,4) : Num_depend</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Data_nascimento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Data_nascimento]"
+                      name="Deriv_Data_nascimento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_nascimento]} == "NULL" ? NULL(DT_WSTR,30) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_nascimento]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Data_nascimento == "NULL" ? NULL(DT_WSTR,30) : Data_nascimento</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_Cargo]"
+                      name="Deriv_Id_Cargo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_Cargo]} == "NULL" ? NULL(DT_WSTR,4) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_Cargo]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Id_Cargo == "NULL" ? NULL(DT_WSTR,4) : Id_Cargo</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Salario]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Salario]"
+                      name="Deriv_Salario"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Salario]} == "NULL" ? NULL(DT_WSTR,14) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Salario]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Salario == "NULL" ? NULL(DT_WSTR,14) : Salario</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Premio_Mensal]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Premio_Mensal]"
+                      name="Deriv_Premio_Mensal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Premio_mensal]} == "NULL" ? NULL(DT_WSTR,14) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Premio_mensal]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Premio_mensal == "NULL" ? NULL(DT_WSTR,14) : Premio_mensal</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Sindicalizado]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Sindicalizado]"
+                      name="Deriv_Sindicalizado"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Sindicalizado]} == "NULL" ? NULL(DT_WSTR,4) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Sindicalizado]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Sindicalizado == "NULL" ? NULL(DT_WSTR,4) : Sindicalizado</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_departamento]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Id_departamento]"
+                      name="Deriv_Id_departamento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_departamento]} == "NULL" ? NULL(DT_WSTR,4) : #{Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_departamento]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Id_departamento == "NULL" ? NULL(DT_WSTR,4) : Id_departamento</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Inserir_Dados_Tb_emporig"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_EMPREGADO_ORIG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  connectionManagerRefId="Package.ConnectionManagers[ALUNO1.STAGEAREA]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Id_empregado]"
+                      cachedDataType="i4"
+                      cachedName="Id_empregado"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_empregado]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Nome]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Data_admissao]"
+                      cachedDataType="date"
+                      cachedName="Data_admissao"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[DATA_ADMISSAO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_admissao]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Obs]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="Obs"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[OBS]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Obs]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Foto]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="Foto"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[FOTO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Foto]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Cod_supervisor]"
+                      cachedDataType="i4"
+                      cachedName="Cod_supervisor"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[COD_SUPERVISOR]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Cod_supervisor]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[comissao]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="comissao"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[comissao]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[comissao]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Conv_Num_depend]"
+                      cachedDataType="i2"
+                      cachedName="Conv_Num_depend"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[NUM_DEPEND]"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Num_depend]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Conv_Data_nascimento]"
+                      cachedDataType="date"
+                      cachedName="Conv_Data_nascimento"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Data_nascimento]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Conv_Id_Cargo]"
+                      cachedDataType="i4"
+                      cachedName="Conv_Id_Cargo"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[ID_CARGO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Id_Cargo]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Conv_Sindicalizado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="Conv_Sindicalizado"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[SINDICALIZADO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sindicalizado]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Conv_Id_departamento]"
+                      cachedDataType="i4"
+                      cachedName="Conv_Id_departamento"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Id_departamento]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Deriv_Salario]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Deriv_Salario"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[SALARIO]"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Salario]" />
+                    <inputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].Columns[Deriv_Premio_Mensal]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Deriv_Premio_Mensal"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[PREMIO_MENSAL]"
+                      lineageId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output].Columns[Deriv_Premio_Mensal]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPREGADO]"
+                      dataType="i4"
+                      name="ID_EMPREGADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[NOME]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NOME" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[NUM_DEPEND]"
+                      dataType="i2"
+                      name="NUM_DEPEND" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[DATA_NASCIMENTO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_NASCIMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[ID_DEPARTAMENTO]"
+                      dataType="i4"
+                      name="ID_DEPARTAMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[ID_CARGO]"
+                      dataType="i4"
+                      name="ID_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[DATA_ADMISSAO]"
+                      dataType="dbTimeStamp"
+                      name="DATA_ADMISSAO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[SALARIO]"
+                      dataType="numeric"
+                      name="SALARIO"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[PREMIO_MENSAL]"
+                      dataType="numeric"
+                      name="PREMIO_MENSAL"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[SINDICALIZADO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SINDICALIZADO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[OBS]"
+                      codePage="1252"
+                      dataType="text"
+                      name="OBS" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[FOTO]"
+                      dataType="image"
+                      name="FOTO" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[COD_SUPERVISOR]"
+                      dataType="i4"
+                      name="COD_SUPERVISOR" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input].ExternalColumns[comissao]"
+                      dataType="numeric"
+                      name="comissao"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1046"
+              name="Leitura_tb_emptxt"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Conexao_tbempregadotxt]"
+                  connectionManagerRefId="Package.ConnectionManagers[Conexao_tbempregadotxt]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_empregado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Id_empregado]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_empregado]"
+                      name="Id_empregado"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Nome]"
+                      length="50"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Nome]"
+                      name="Nome"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Num_depend]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Num_depend]"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Num_depend]"
+                      name="Num_depend"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_nascimento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Data_nascimento]"
+                      length="30"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_nascimento]"
+                      name="Data_nascimento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_departamento]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Id_departamento]"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_departamento]"
+                      name="Id_departamento"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_Cargo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Id_Cargo]"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Id_Cargo]"
+                      name="Id_Cargo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_admissao]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Data_admissao]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Data_admissao]"
+                      name="Data_admissao"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Salario]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Salario]"
+                      length="14"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Salario]"
+                      name="Salario"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Premio_mensal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Premio_mensal]"
+                      length="14"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Premio_mensal]"
+                      name="Premio_mensal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Sindicalizado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Sindicalizado]"
+                      length="4"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Sindicalizado]"
+                      name="Sindicalizado"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Obs]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Obs]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Obs]"
+                      name="Obs"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Foto]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Foto]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Foto]"
+                      name="Foto"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Cod_supervisor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Cod_supervisor]"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[Cod_supervisor]"
+                      name="Cod_supervisor"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[comissao]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[comissao]"
+                      length="7"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].Columns[comissao]"
+                      name="comissao"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Id_empregado]"
+                      dataType="i4"
+                      name="Id_empregado" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Nome]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Num_depend]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Num_depend" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Data_nascimento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Data_nascimento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Id_departamento]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Id_departamento" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Id_Cargo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Id_Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Data_admissao]"
+                      dataType="date"
+                      name="Data_admissao" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Salario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="Salario" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Premio_mensal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="14"
+                      name="Premio_mensal" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Sindicalizado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="Sindicalizado" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Obs]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Obs" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Foto]"
+                      codePage="1252"
+                      dataType="text"
+                      name="Foto" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[Cod_supervisor]"
+                      dataType="i4"
+                      name="Cod_supervisor" />
+                    <externalMetadataColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output].ExternalColumns[comissao]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="comissao" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga_tb_empregadotxt.Paths[Data Conversion Output]"
+              endId="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Carga_tb_empregadotxt\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Carga_tb_empregadotxt.Paths[Derived Column Output]"
+              endId="Package\Carga_tb_empregadotxt\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Carga_tb_empregadotxt\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Carga_tb_empregadotxt.Paths[Flat File Source Output]"
+              endId="Package\Carga_tb_empregadotxt\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Executa_Proc_SP_AtualizaSal"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6BD7B863-27FF-45EB-9E40-E274900595EA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Executa_Proc_SP_AtualizaSal"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{AC837492-28E1-4F8C-B041-758514D215FE}"
+          SQLTask:SqlStatementSource="EXEC SP_ATUALIZA_SAL" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{1BB44F9D-19D7-4897-B67A-B21960D0561F}"
+      DTS:From="Package\Carga_tb_empregadotxt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Carga_Tb_empregadoFinal" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8547131F-3BCD-4937-A9EF-61E7D5F1F3D9}"
+      DTS:From="Package\Carga_Tb_empregadoFinal"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Executa_Proc_SP_AtualizaSal" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{36A2F9E6-A8D2-415C-8363-83129EA8869D}"
+      DTS:From="Package\ApagaRegs_TabelasOrig_Final"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Carga_tb_empregadotxt" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Carga_tb_empregadotxt"
+          TopLeft="385.500006471362,94.8176483114698" />
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Executa_Proc_SP_AtualizaSal"
+          TopLeft="387.214292214841,279.570592079031" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Carga_Tb_empregadoFinal"
+          TopLeft="385.785720251045,187.829413901068" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="484.842863361203,136.41764831147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.4117655895985"
+              Start="0,0"
+              End="0,43.9117655895985">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.9117655895985" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="491.700006232943,229.429413901068">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.1411781779624"
+              Start="0,0"
+              End="0,42.6411781779624">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.6411781779624" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="220,41.6"
+          Id="Package\ApagaRegs_TabelasOrig_Final"
+          TopLeft="380.000006471362,9.78823543139395" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="490.000006471362,51.388235431394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.4999999999996,43.4294128800759"
+              Start="0,0"
+              End="-8.4999999999996,35.9294128800759">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7147064400379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.7147064400379"
+                    Point2="0,21.7147064400379"
+                    Point3="-4,21.7147064400379" />
+                  <mssgle:LineSegment
+                    End="-4.4999999999996,21.7147064400379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.4999999999996,21.7147064400379"
+                    Point2="-8.4999999999996,21.7147064400379"
+                    Point3="-8.4999999999996,25.7147064400379" />
+                  <mssgle:LineSegment
+                    End="-8.4999999999996,35.9294128800759" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Carga_tb_empregadotxt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Carga_tb_empregadotxt\Leitura_tb_emptxt"
+          TopLeft="436.014283768012,17.3117645686061" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Carga_tb_empregadotxt\Data Conversion"
+          TopLeft="448.571436210555,192.094120341106" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Carga_tb_empregadotxt\Derived Column"
+          TopLeft="442.071436006196,101.547060170553" />
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig"
+          TopLeft="426.35714120281,288.864707898599" />
+        <EdgeLayout
+          Id="Package\Carga_tb_empregadotxt.Paths[Derived Column Output]"
+          TopLeft="522.321436108376,143.147060170553">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.947060170553"
+              Start="0,0"
+              End="0,41.447060170553">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.447060170553" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_tb_empregadotxt.Paths[Data Conversion Output]"
+          TopLeft="527.864288706683,233.694120341106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.170587557493"
+              Start="0,0"
+              End="0,47.670587557493">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.670587557493" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Carga_tb_empregadotxt.Paths[Flat File Source Output]"
+          TopLeft="518.442859887104,58.9117645686061">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.6352956019471"
+              Start="0,0"
+              End="0,35.1352956019471">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1352956019471" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_tb_empregadotxt\Inserir_Dados_Tb_emporig">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga_Tb_empregadoFinal">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="247.2,56.8"
+          Id="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig"
+          TopLeft="521.6,70.4" />
+        <NodeLayout
+          Size="236.8,67.2"
+          Id="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal"
+          TopLeft="532.8,178.4" />
+        <EdgeLayout
+          Id="Package\Carga_Tb_empregadoFinal.Paths[OLE DB Source Output]"
+          TopLeft="648.2,127.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.2"
+              Start="0,0"
+              End="0,43.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Tb_empregadoFinal\Leitura_Tb_Empregado_Orig">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga_Tb_empregadoFinal\Inserir_Regs_Tb_EmpregadoFinal">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
